@@ -135,8 +135,7 @@ def insert_into_story_table(story_id, insurance_id, active_customer_support_cont
 def update_age_in_story_fresh_table(story_id, age_id, db_cursor, db_connection):
     query = """
     UPDATE story_fresh
-    SET created_at = NOW(),
-        username = 'service@motusnova.com',
+    SET created_at = NOW(), 
         age_id = %s
     WHERE story_id = %s
     """
@@ -148,9 +147,8 @@ def insert_age_in_story_table(story_id, age_id, db_cursor, db_connection):
     INSERT INTO story
         (story_id,
         created_at,
-        username,
         age_id)
-    VALUES (%s, NOW(), 'service@motusnova.com', %s)
+    VALUES (%s, NOW(), %s)
     """
     db_cursor.execute(query, (story_id, age_id))
     db_connection.commit()
