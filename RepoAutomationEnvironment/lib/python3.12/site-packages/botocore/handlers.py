@@ -1078,6 +1078,12 @@ def remove_connecthealth_start_medical_scribe_listening_session(
         del class_attributes['start_medical_scribe_listening_session']
 
 
+def remove_polly_start_speech_synthesis_stream(class_attributes, **kwargs):
+    """Operation requires h2 which is currently unsupported in Python"""
+    if 'start_speech_synthesis_stream' in class_attributes:
+        del class_attributes['start_speech_synthesis_stream']
+
+
 def enable_millisecond_timestamp_precision(serializer_kwargs, **kwargs):
     """Event handler to enable millisecond precision"""
     serializer_kwargs['timestamp_precision'] = TIMESTAMP_PRECISION_MILLISECOND
@@ -1503,6 +1509,10 @@ BUILTIN_HANDLERS = [
     (
         'creating-client-class.connecthealth',
         remove_connecthealth_start_medical_scribe_listening_session,
+    ),
+    (
+        'creating-client-class.polly',
+        remove_polly_start_speech_synthesis_stream,
     ),
     (
         'creating-serializer.bedrock-agentcore',

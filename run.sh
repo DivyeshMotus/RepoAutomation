@@ -1,3 +1,3 @@
 #!/bin/bash
-source /home/dved/MedicalRecordsAuthorizationInsertion/MedicalRecordsAuthorizationInsertion/bin/activate
+source /home/dved/RepoAutomation/RepoAutomationEnvironment/bin/activate
 python3 run.py
