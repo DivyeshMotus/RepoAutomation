@@ -63,6 +63,7 @@ def get_insurance_ids_that_entered_repo(cursor):
         AND dpp.device_id IS NOT NULL 
         AND (ah.timestamp IS NULL OR dpp.timestamp > ah.timestamp)
         AND dpp.device_id BETWEEN 100000 AND 9999999
+        AND c.type IS DISTINCT FROM 'dmeReferral'
     ORDER by s.created_at, s.story_id, dpp.device_id;
     """
     cursor.execute(query)
